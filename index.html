@@ -798,7 +798,7 @@ function stepHTML(id,d){
     var sub=d.dose!==null?"Calculated dose "+fmtMg(d.dose)+(n?". Nearest row on the "+d.bag+" ml chart is "+n.dose+" mg.":""):"No BSA entered, so choose a row from the "+d.bag+" ml chart.";
     var eff=d.row?String(d.row.dose):"";
     var w=warnText(d);
-    h='<h2 class="q" id="wizQ" tabindex="-1">Which chart dose row?</h2><p class="qsub">'+sub+' Values in mg. Rates are never interpolated.</p>'+
+    h='<h2 class="q" id="wizQ" tabindex="-1">Which chart dose row?</h2><p class="qsub">'+sub+' Values in mg. Rates are always taken straight from the chart.</p>'+
       (n?'<div class="wbtns" style="margin-top:0"><button type="button" class="btn go" data-act="nearest">Use nearest · '+n.dose+' mg</button></div>':'')+
       '<div class="rowgrid" role="radiogroup" aria-label="Chart dose row">'+d.table.map(function(r){var v=String(r.dose);return opt(v,String(r.dose),"",v===eff&&!!d.manual,n&&n.dose===r.dose?"near":"");}).join("")+'</div>'+
       (w?'<div class="warnline" role="status">'+w+'</div>':'');
