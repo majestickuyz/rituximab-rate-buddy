@@ -591,6 +591,7 @@ html[data-big="1"] .anastep{min-height:72px;font-size:18px}
 .sheet-card .rxpump{color:var(--on-yellow)}
 .sheet-card .rxtier p{color:inherit}
 details.rxc.cD{border-left-color:var(--ink2)}
+.rxlink{color:inherit;text-decoration:underline;text-underline-offset:2px;font-weight:700;word-break:break-all;overflow-wrap:anywhere;display:block;margin-top:3px}
 </style>
 </head>
 <body>
@@ -861,26 +862,27 @@ var RX_OTHER=[
   src:"Kent and Medway pathway v6, Nov 2024 [7]; UKONS v4.0, 13 Feb 2023 [5]; Royal Marsden patient information, Nov 2022 [11]."}
 ];
 var RX_REFS=[
- "[1] Roche (2026) MabThera 500 mg concentrate for solution for infusion: SmPC. Electronic Medicines Compendium, updated 23 Jun 2026. medicines.org.uk/emc/product/793/smpc",
- "[2] Roche (2026) MabThera 1400 mg solution for subcutaneous injection: SmPC. emc, updated 23 Jun 2026. medicines.org.uk/emc/product/5333/smpc",
- "[3] Resuscitation Council UK (2021) Emergency treatment of anaphylaxis: guidelines for healthcare providers. May 2021. resus.org.uk",
- "[4] UK SACT Board (2025) Anaphylaxis and hypersensitivity reactions: guidance for adults receiving IV SACT for solid tumours. v1.0, 8 Aug 2025. uksactboard.org (solid-tumour scope; section 5.3 names rituximab)",
- "[5] UK Oncology Nursing Society (2023) Acute oncology initial management guidelines. v4.0, 13 Feb 2023. kmcc.nhs.uk",
+ "[1] Roche (2026) MabThera 500 mg concentrate for solution for infusion: SmPC. Electronic Medicines Compendium, updated 23 Jun 2026.",
+ "[2] Roche (2026) MabThera 1400 mg solution for subcutaneous injection: SmPC. emc, updated 23 Jun 2026.",
+ "[3] Resuscitation Council UK (2021) Emergency treatment of anaphylaxis: guidelines for healthcare providers. May 2021.",
+ "[4] UK SACT Board (2025) Anaphylaxis and hypersensitivity reactions: guidance for adults receiving IV SACT for solid tumours. v1.0, 8 Aug 2025. (solid-tumour scope; section 5.3 names rituximab)",
+ "[5] UK Oncology Nursing Society (2023) Acute oncology initial management guidelines. v4.0, 13 Feb 2023.",
  "[6] Northern Cancer Alliance (2018) Policy for the management of allergic reactions and/or hypersensitivity due to chemotherapy and monoclonal antibodies. v1.5, expired Jan 2021 (comparison only).",
- "[7] Network Chemotherapy Nursing Group, Kent and Medway (2024) SACT care pathway: hypersensitivity reactions and anaphylaxis. v6, Nov 2024 (review due Nov 2026). kmcc.nhs.uk",
+ "[7] Network Chemotherapy Nursing Group, Kent and Medway (2024) SACT care pathway: hypersensitivity reactions and anaphylaxis. v6, Nov 2024 (review due Nov 2026).",
  "[8] Rosello S et al. (2017) Management of infusion reactions to systemic anticancer therapy: ESMO Clinical Practice Guidelines. Ann Oncol 28(Suppl 4):iv100-iv118. doi:10.1093/annonc/mdx216",
  "[9] NSSG Haematology, Lymphoma Group (2017) Guidelines for administration of rapid infusion rituximab (N.28e TVCN). v5.0, review date May 2019.",
  "[10] Royal Cornwall Hospitals NHS Trust (2023) SACT-related hypersensitivity reactions in adults: clinical guideline. v1.0, May 2023.",
  "[11] The Royal Marsden NHS Foundation Trust (2022) Rituximab treatment: patient information (LY-0346-04). Revised Nov 2022.",
  "[12] Genentech (2021) RITUXAN prescribing information. Revised 12/2021. US FDA.",
- "[13] Cancer Institute NSW. eviQ: 125 NHL rituximab; 1831 Hypersensitivity reaction. eviq.org.au",
- "[14] BC Cancer (2025/2026) Protocol summaries SCDRUGRX (1 Sep 2025) and LYRITUX (1 Apr 2026). bccancer.bc.ca",
+ "[13] Cancer Institute NSW. eviQ: 125 NHL rituximab; 1831 Hypersensitivity reaction.",
+ "[14] BC Cancer (2025/2026) Protocol summaries SCDRUGRX (1 Sep 2025) and LYRITUX (1 Apr 2026).",
  "[15] Kent and Medway SACT protocol (2019) R-IVE prescription proforma, haem-nhl-084 v1.",
  "[16] National Cancer Institute (2017) Common Terminology Criteria for Adverse Events (CTCAE) v5.0. 27 Nov 2017.",
- "[17] British Society for Haematology (2025) Updated guidelines for the diagnosis and management of tumour lysis syndrome in adults and children. 3 Sep 2025 (landing page only).",
+ "[17] British Society for Haematology (2025) Updated guidelines for the diagnosis and management of tumour lysis syndrome in adults and children. 3 Sep 2025.",
  "[18] NSSG Haematology, Lymphoma and CLL (n.d.) Nursing care plan: R-mini-CHOP.",
- "[19] MHRA (2012) Reporting suspected adverse drug reactions to vaccines and biological medicines. Drug Safety Update 6(4):H1. Yellow Card: yellowcard.mhra.gov.uk"
+ "[19] MHRA (2012) Reporting suspected adverse drug reactions to vaccines and biological medicines. Drug Safety Update 6(4):H1. Yellow Card scheme."
 ];
+var RX_REF_URLS=[["https://www.medicines.org.uk/emc/product/793/smpc"], ["https://www.medicines.org.uk/emc/product/5333/smpc"], ["https://www.resus.org.uk/library/additional-guidance/guidance-anaphylaxis/emergency-treatment"], ["https://www.uksactboard.org/_files/ugd/638ee8_b05f2c4fff6c4f33b6592a3b53f130e1.pdf"], ["https://www.kmcc.nhs.uk/s3/assets/ukons-ao-initial-management-guidelines-final-version-%5B2023%5D-1689936130.pdf"], ["https://northerncanceralliance.nhs.uk/wp-content/uploads/2018/11/Chemotherapy-and-MAB-Allergic-Reactions-and-Hypersensitivity-Policy-1.5.pdf"], ["https://www.kmcc.nhs.uk/s3/assets/systemic-anti-cancer-therapy-care-pathway---anaphylaxis-v6.pdf"], ["https://doi.org/10.1093/annonc/mdx216"], ["https://nssg.oxford-haematology.org.uk/lymphoma/documents/lymphoma-chemo-protocol-care-plan/N-28e-care-plan-rituximab-rapid-infusion.pdf"], ["https://doclibrary-rcht.cornwall.nhs.uk/GET/d10365787"], ["https://patientinfolibrary.royalmarsden.nhs.uk/document/download/1263"], ["https://www.accessdata.fda.gov/drugsatfda_docs/label/2021/103705s5467lbl.pdf"], ["https://www.eviq.org.au/haematology/lymphoma/other-b-cell-lymphoma/125-nhl-rituximab", "https://www.eviq.org.au/clinical-resources/side-effect-and-toxicity-management/immunological/1831-hypersensitivity-reaction"], ["https://www.bccancer.bc.ca/chemotherapy-protocols-site/Documents/Supportive%20Care/SCDRUGRX_Protocol.pdf", "https://www.bccancer.bc.ca/chemotherapy-protocols-site/Documents/Lymphoma-Myeloma/LYRITUX_Protocol.pdf"], ["https://www.kmcc.nhs.uk/s3/assets/files/haem-nhl-084-v1-r-ive-prescription-proforma.pdf"], ["https://dctd.cancer.gov/research/ctep-trials/for-sites/adverse-events/ctcae-v5-8x11.pdf"], ["https://b-s-h.org.uk/guidelines/guidelines/updated-guidelines-for-the-diagnosis-and-management-of-tumour-lysis-syndrome-in-adults-and-children"], ["https://nssg.oxford-haematology.org.uk/lymphoma/documents/lymphoma-chemo-protocol-care-plan/N-L-83-rminichop-ncp.pdf"], ["https://www.gov.uk/drug-safety-update/reporting-suspected-adverse-drug-reactions-to-vaccines-and-biological-medicines", "https://yellowcard.mhra.gov.uk/"]];
 /* symptom checklist: [id, label, level (1 to 4), system, category flag] */
 var RX_SYM=[
  {g:"Skin and face",i:[
@@ -2111,7 +2113,7 @@ function renderRxRef(){
     h+=rxRefCard({c:o.c,cls:o.cls,name:o.name,line:o.line,signs:o.signs,acts:o.acts,note:o.note,src:o.src,n:o.id==="delayed"?1:2},o.id);
   });
   h+='<div class="rxnote"><span class="rxrest">'+esc(RX_RESTART)+'</span> The app never suggests or calculates a restart rate. Rates always come straight from the chart.</div>';
-  h+='<h3 style="margin:16px 0 0;font-size:16px">References</h3><ul class="rxrefs">'+RX_REFS.map(function(r){return '<li>'+esc(r)+'</li>';}).join("")+'</ul>';
+  h+='<h3 style="margin:16px 0 0;font-size:16px">References</h3><ul class="rxrefs">'+RX_REFS.map(function(r,i){return '<li>'+esc(r)+(RX_REF_URLS[i]||[]).map(function(u){return ' <a class="rxlink" href="'+esc(u)+'" target="_blank" rel="noopener noreferrer">'+esc(u.replace(/^https:\/\//,""))+'</a>';}).join("")+'</li>';}).join("")+'</ul>';
   h+='<p class="hint">Sources opened and read on '+RX_REVIEWED+'. Content last reviewed '+RX_REVIEWED+'. Some sources are older or expired (flagged above). Not yet signed off by pharmacy or SACT governance: check with your governance lead before wider use.</p></div>';
   $("rxRef").innerHTML=h;
 }

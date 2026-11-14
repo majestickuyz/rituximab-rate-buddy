@@ -1,7 +1,7 @@
 /* Rituximab Rate Buddy service worker: cache-first precache of every file.
    The cache name carries a content hash, so any change to the app creates a new cache
    and the activate step deletes the old ones. */
-const VERSION = "26bf9874f18f";
+const VERSION = "a6f353a54901";
 const CACHE = "rrb-" + VERSION;
 const PRECACHE = [
   "./",
