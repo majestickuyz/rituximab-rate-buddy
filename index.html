@@ -27,7 +27,7 @@
   --hero-bg:linear-gradient(160deg,#fff,#EEF3FF); --score-bg:linear-gradient(135deg,#fff,#F4EFFF);
   --line:#E4DDFF; --muted-bg:#E4DDFF; --edge:#1B1340; --cardsh:rgba(20,10,80,.35);
   --yellow:#FFD23F; --on-yellow:#1B1340;
-  --blue:#2F6BFF; --on-blue:#fff; --blueD:#1A45B8;
+  --blue:#2D68FC; --on-blue:#fff; --blueD:#1A45B8;
   --green:#2ED573; --on-green:#1B1340;
   --orange:#FF9F1C; --on-orange:#1B1340;
   --pink:#D42A66; --on-pink:#fff; --danger:#C62828; --on-danger:#fff;
@@ -469,6 +469,128 @@ html[data-theme="eink"] .tabbar{backdrop-filter:none}
 :focus-visible{outline:var(--focus-w) solid var(--focus);outline-offset:3px}
 header :focus-visible,.wprog :focus-visible{outline-color:var(--on-bg)}
 html[data-theme="dark"] header :focus-visible{outline-color:var(--focus)}
+/* ---- infusion reactions ---- */
+:root{--tabh:calc(72px + env(safe-area-inset-bottom));--rxh:46px}
+html[data-big="1"]{--tabh:calc(84px + env(safe-area-inset-bottom));--rxh:58px}
+.tab{padding:0 2px}
+html[data-big="1"] .tab{font-size:15px}
+.rxbar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--tabh) + 6px);width:calc(100% - 24px);max-width:536px;z-index:35;min-height:var(--rxh);display:flex;align-items:center;gap:8px;padding:6px 12px;background:var(--warn-bg);color:var(--ink);border:var(--bw) solid var(--warn-bd);border-radius:var(--r-btn);font:inherit;font-weight:800;font-size:15px;text-align:left;cursor:pointer}
+html[data-theme="hc"] .rxbar,html[data-theme="eink"] .rxbar{border-color:var(--edge)}
+.rxbar b{font-weight:900}
+.rxbar small{margin-left:auto;font-size:13px;color:var(--ink2);font-weight:700;text-align:right}
+.rxbar.due{background:var(--danger);color:var(--on-danger);border-color:var(--edge)}
+.rxbar.due small{color:var(--on-danger)}
+html[data-big="1"] .rxbar{font-size:17px}
+body.rx-on .app{padding-bottom:calc(120px + var(--rxh))}
+html[data-big="1"] body.rx-on .app{padding-bottom:calc(160px + var(--rxh))}
+.toast{bottom:calc(var(--tabh) + 12px)}
+body.rx-on .toast{bottom:calc(var(--tabh) + var(--rxh) + 18px)}
+body.is-locked .rxbar{z-index:310}
+#rxSheet{z-index:320}
+#anaScreen{position:fixed;inset:0;z-index:330;overflow:auto;background:var(--danger);color:var(--on-danger)}
+#rxSheet .sheet-card{max-height:92vh}
+.rxhead{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin:0 0 8px}
+.rxhead h2{margin:0;font-size:22px;font-weight:900;outline:none}
+.rxhead .btn{min-height:44px;flex:none}
+.rxpump{background:var(--yellow);color:var(--on-yellow);border:var(--bw) solid var(--edge);border-radius:var(--r-btn);padding:10px 12px;font-weight:900;font-size:16px;margin:0 0 12px}
+.rxsec{margin:16px 0 6px;font-size:16px;font-weight:900}
+.rxgrp{margin:10px 0 4px;font-size:13px;font-weight:900;color:var(--ink2);text-transform:uppercase;letter-spacing:.3px}
+.rxsyms{display:grid;gap:8px}
+.rxsym,.rxact{display:flex;align-items:center;gap:12px;width:100%;min-height:52px;text-align:left;font:inherit;font-weight:800;font-size:15px;border:var(--bw) solid var(--line);border-radius:var(--r-btn);padding:8px 12px;background:var(--card);color:var(--ink);cursor:pointer}
+html[data-theme="hc"] .rxsym,html[data-theme="eink"] .rxsym,html[data-theme="hc"] .rxact,html[data-theme="eink"] .rxact{border-color:var(--edge)}
+html[data-big="1"] .rxsym,html[data-big="1"] .rxact{min-height:64px;font-size:17px}
+.rxsym .box,.rxact .box{flex:none;width:28px;height:28px;border:3px solid var(--edge);border-radius:8px;background:var(--input-bg);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px;line-height:1}
+.rxsym[aria-checked="true"],.rxact[aria-checked="true"]{background:var(--yellow);color:var(--on-yellow);border-color:var(--edge)}
+.rxsym[aria-checked="true"] .box,.rxact[aria-checked="true"] .box{background:var(--card);color:var(--ink)}
+.rxact .t{flex:1;min-width:0}
+.rxact .t small{display:block;font-weight:700;font-size:12.5px;color:var(--ink2);margin-top:2px}
+.rxact[aria-checked="true"] .t small{color:var(--on-yellow)}
+.rxact time{flex:none;font-size:13px;font-weight:900;font-variant-numeric:tabular-nums}
+.rxtier{border:var(--bw) solid var(--edge);border-radius:var(--r-card);padding:12px;margin:12px 0 0}
+.rxtier small{display:block;font-weight:800;font-size:13px}
+.rxtier b{display:block;font-size:22px;font-weight:900;margin:2px 0 4px}
+.rxtier p{margin:4px 0 0;font-size:14px;font-weight:700;color:inherit}
+.tb1{background:var(--green);color:var(--on-green)}
+.tb2{background:var(--orange);color:var(--on-orange)}
+.tb3{background:var(--pink);color:var(--on-pink)}
+.tb4{background:var(--danger);color:var(--on-danger)}
+.tbT{background:var(--blue);color:var(--on-blue)}
+.tbC{background:var(--teal);color:var(--on-teal)}
+.tbD{background:var(--muted-bg);color:var(--ink)}
+.tbadge{flex:none;border-radius:99px;padding:3px 12px;font-weight:900;font-size:14px;border:2px solid var(--edge);white-space:nowrap}
+.rxchg{margin:10px 0 0}
+.rxchg .chip{flex:1 1 44%;min-height:48px}
+.rxnote{border:var(--bw) solid var(--edge);border-radius:var(--r-btn);padding:10px 12px;margin:10px 0 0;background:var(--card2);color:var(--ink);font-weight:800;font-size:14px}
+.rxnote .row{margin-top:8px}
+.rxnote .btn{min-height:48px}
+.rxnote.warnc{background:var(--warn-bg);border-color:var(--warn-bd)}
+html[data-theme="hc"] .rxnote.warnc,html[data-theme="eink"] .rxnote.warnc{border-color:var(--edge)}
+.btn.rxana{background:var(--danger);color:var(--on-danger);width:100%;min-height:60px;font-size:18px;margin:12px 0 0}
+html[data-theme="eink"] .btn.rxana{border-style:double;border-width:6px}
+.rxrest{font-weight:900}
+.rxlist{list-style:none;margin:6px 0 0;padding:0}
+.rxlist li{border-top:2px solid var(--line);padding:8px 0;font-size:14px;font-weight:700}
+.rxlist time{font-weight:900;font-variant-numeric:tabular-nums}
+.rxfoot{display:grid;gap:10px;margin:14px 0 0}
+.rxfoot .btn{width:100%}
+.watch{display:block;margin-top:6px;font-weight:800;font-size:13.5px}
+.prompt .watch{margin:0 0 12px;font-size:15px}
+.rxstat{border:var(--bw) solid var(--edge);border-radius:var(--r-card);padding:10px 12px;margin:0 0 14px;background:var(--warn-bg);color:var(--ink);font-weight:800;font-size:14px}
+html[data-theme="rm"] .rxstat,html[data-theme="playful"] .rxstat,html[data-theme="dark"] .rxstat{border-color:var(--warn-bd)}
+.rxstat .btn{min-height:44px;margin-top:8px;width:100%}
+/* reference tab */
+.rxref .lead{font-size:14px;font-weight:700;color:var(--ink2);margin:0 0 12px}
+details.rxc{background:var(--card);border:var(--bw) solid var(--line);border-left-width:10px;border-radius:var(--r-card);margin:0 0 12px}
+html[data-theme="hc"] details.rxc,html[data-theme="eink"] details.rxc{border-color:var(--edge)}
+details.rxc.c1{border-left-color:var(--green)}details.rxc.c2{border-left-color:var(--orange)}details.rxc.c3{border-left-color:var(--pink)}details.rxc.c4{border-left-color:var(--danger)}details.rxc.cT{border-left-color:var(--blue)}details.rxc.cC{border-left-color:var(--teal)}
+details.rxc>summary{list-style:none;cursor:pointer;display:flex;gap:10px;align-items:center;padding:10px 12px;min-height:60px}
+details.rxc>summary::-webkit-details-marker{display:none}
+details.rxc>summary .st{flex:1;min-width:0;font-weight:800;font-size:14px;color:var(--ink2)}
+details.rxc>summary .ch{flex:none;font-weight:900;font-size:18px}
+details.rxc[open]>summary .ch{transform:rotate(180deg)}
+.rxc .rxb{padding:0 14px 14px;font-size:14px;font-weight:600}
+.rxc .rxb h4{margin:12px 0 4px;font-size:14px;font-weight:900}
+.rxc .rxb ul{margin:0;padding-left:20px}
+.rxc .rxb li{margin:3px 0}
+.rxc .rxb .uk{display:block;color:var(--ink2);font-size:12.5px;font-weight:700}
+.rxc .rxb .src{margin:12px 0 0;font-size:12.5px;font-weight:700;color:var(--ink2);border-top:2px solid var(--line);padding-top:8px}
+.rxdisc{background:var(--yellow);color:var(--on-yellow);border:var(--bw) solid var(--edge);border-radius:var(--r-btn);padding:10px 12px;font-weight:900;font-size:15px;margin:0 0 12px}
+.rxrefs{font-size:12.5px;font-weight:600;padding-left:0;list-style:none;margin:8px 0 0}
+.rxrefs li{margin:0 0 6px}
+.ana h1,.ana h2,.ana p{margin:0}
+.ana .anain{max-width:560px;margin:0 auto;padding:calc(12px + env(safe-area-inset-top)) 12px calc(28px + env(safe-area-inset-bottom))}
+.ana .ahead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 10px}
+.ana .ahead h2{font-size:24px;font-weight:900;line-height:1.1;outline:none}
+.ana .ahead .btn{min-height:48px;flex:none}
+.ana .sub{font-weight:800;font-size:14px;margin:0 0 10px}
+.ana .rxpump{font-size:18px;text-align:center}
+.anastep{display:flex;align-items:flex-start;gap:12px;width:100%;text-align:left;font:inherit;font-weight:800;font-size:16px;min-height:60px;border:var(--bw) solid var(--edge);border-radius:var(--r-btn);padding:10px 12px;margin:0 0 10px;background:var(--card);color:var(--ink);cursor:pointer}
+html[data-big="1"] .anastep{min-height:72px;font-size:18px}
+.anastep .n{flex:none;width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--card);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px}
+.anastep .t{flex:1;min-width:0}
+.anastep .t small{display:block;font-weight:700;font-size:13px;color:var(--ink2);margin-top:2px}
+.anastep time{flex:none;font-size:13px;font-weight:900;font-variant-numeric:tabular-nums}
+.anastep[aria-checked="true"]{background:var(--yellow);color:var(--on-yellow)}
+.anastep[aria-checked="true"] .t small{color:var(--on-yellow)}
+.anastep[aria-checked="true"] .n{background:var(--on-yellow);color:var(--yellow)}
+.anabox{background:var(--card);color:var(--ink);border:var(--bw) solid var(--edge);border-radius:var(--r-card);padding:12px;margin:0 0 10px}
+.anabox h3{margin:0 0 4px;font-size:17px;font-weight:900}
+.anabox p{color:var(--ink);font-weight:700;font-size:14px;margin:4px 0}
+.anacd{font-size:56px;font-weight:900;letter-spacing:-1px;text-align:center;font-variant-numeric:tabular-nums;line-height:1.1;margin:6px 0}
+.anacd.due{font-size:26px}
+.anabox .btn{width:100%;min-height:60px;margin-top:8px}
+.ana .rxlist li{border-color:var(--line)}
+.ana .anasrc{font-size:12.5px;font-weight:700;margin:6px 0 12px}
+.ana .btn.plainw{background:var(--card);color:var(--ink)}
+.rxtop{position:sticky;top:-18px;z-index:3;background:var(--card);margin:-18px -16px 8px;padding:14px 16px 8px}
+.rxtop .rxpump{margin:0;padding:6px 10px;font-size:14px}
+.rxtop .rxhead{margin:0 0 6px}
+.rxstickyf{position:sticky;bottom:calc(-1 * (16px + env(safe-area-inset-bottom)));z-index:3;background:var(--card);margin:14px -16px 0;padding:10px 16px calc(12px + env(safe-area-inset-bottom));border-top:var(--bw) solid var(--edge);display:flex;align-items:center;gap:10px}
+.rxstickyf .rxtl{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;align-items:flex-start}
+.rxstickyf .btn{flex:none}
+.sheet-card .rxpump{color:var(--on-yellow)}
+.sheet-card .rxtier p{color:inherit}
+details.rxc.cD{border-left-color:var(--ink2)}
 </style>
 </head>
 <body>
@@ -523,9 +645,11 @@ html[data-theme="dark"] header :focus-visible{outline-color:var(--focus)}
         <div class="total" id="totalT">Total time 0:00</div>
         <div class="pausenote" id="pauseNote" hidden></div>
       </div>
+      <div class="rxstat" id="rxStat" hidden></div>
       <div class="card prompt" id="prompt" role="alert" hidden>
         <h3 id="promptTitle">Step up if tolerated?</h3>
         <p id="promptSub"></p>
+        <p class="watch" id="promptWatch"></p>
         <div class="row"><button class="btn go" id="btnStep">⬆ Step up</button><button class="btn warn" id="btnHold">✋ Hold</button></div>
       </div>
       <div class="row" style="margin-bottom:14px">
@@ -557,6 +681,9 @@ html[data-theme="dark"] header :focus-visible{outline-color:var(--focus)}
       <div id="regs"></div>
     </div>
   </section>
+
+  <!-- REACTIONS (reference) -->
+  <section id="p-rx" class="panel" hidden aria-labelledby="t-rx"><div id="rxRef"></div></section>
   </main>
 </div>
 
@@ -599,11 +726,18 @@ html[data-theme="dark"] header :focus-visible{outline-color:var(--focus)}
   <button type="button" class="lockcard" id="lockBtn"><span aria-hidden="true">🔒</span><b id="lockT">Screen locked</b><span class="go">Tap to continue</span><small id="lockSub"></small></button>
 </div>
 <button class="toast" id="toast" hidden>⏰ Step-up time! Tap to open the timer</button>
+<button type="button" class="rxbar" id="rxBar" hidden aria-haspopup="dialog" aria-controls="rxSheet"><span aria-hidden="true">⚠️</span><b id="rxBarT">Reaction?</b><small id="rxBarS">Tap for checklist</small></button>
+<div class="sheet" id="rxSheet" hidden>
+  <div class="sheet-back" id="rxBack"></div>
+  <div class="sheet-card" role="dialog" aria-modal="true" aria-labelledby="rxTitle"><div id="rxBody"></div></div>
+</div>
+<div class="ana" id="anaScreen" role="dialog" aria-modal="true" aria-labelledby="anaTitle" hidden><div id="anaBody"></div></div>
 
 <nav class="tabbar" role="tablist" aria-label="Sections">
   <button class="tab" role="tab" id="t-setup" data-t="setup" aria-selected="true"><span class="ic">🧪</span>Setup</button>
   <button class="tab" role="tab" id="t-run" data-t="run" aria-selected="false"><span class="ic">⏱️</span>Timer<span class="dotb"></span></button>
   <button class="tab" role="tab" id="t-ref" data-t="ref" aria-selected="false"><span class="ic">📋</span>Tables</button>
+  <button class="tab" role="tab" id="t-rx" data-t="rx" aria-selected="false"><span class="ic">🩺</span>Reactions</button>
 </nav>
 <div class="fx" id="fx" aria-hidden="true"></div>
 
@@ -643,6 +777,135 @@ var REF_NOTES={
  "270":"About 270 ml: usually prepared at the Royal Marsden; includes the overage in a 250 ml bag, but not the volume of drug as this is normally removed."
 };
 
+/* ---------- infusion reactions: content (reference extracts from named sources; see research/infusion-reactions.md) ---------- */
+var RX_REVIEWED="14 Nov 2026";
+var RX_PUMP="Stop or adjust the pump yourself \u2014 the app cannot.";
+var RX_RESTART="Restart only on medical instruction \u2014 follow local protocol.";
+var RX_WATCH="Watch for: chills, flushing, itch, breathlessness, throat tightness.";
+var RX_DISC="Quick reference only. Follow your trust policy, prescription and PGD.";
+var RX_KEYS=["mild","moderate","severe","ana"];
+var RX_TIERS={
+ mild:{n:1,name:"Mild",ctcae:"CTCAE grade 1",cls:"tb1",c:"c1",icon:"\u2460",
+  line:"Flushing, mild chills, itch, headache",
+  signs:["Brief flushing or warmth","Mild chills or shivering","Mild itch (local) or a small, brief rash","Headache, mild dizziness or mild nausea","Runny nose or mild throat irritation","Temperature under 38 \u00b0C"],
+  acts:[
+   ["stay","Stay with the patient; check observations and NEWS2"],
+   ["nic","Tell the nurse in charge"],
+   ["slow","Consider slowing or pausing the infusion (local protocol decides)","SmPC: mild or moderate reactions usually respond to slowing the infusion. CTCAE grade 1 does not require interruption, but some trusts stop for any symptoms."],
+   ["para","If symptomatic: paracetamol 1 g oral (as prescribed / per PGD)","Northern Cancer Alliance 2018 (expired Jan 2021). Not every UK protocol gives a drug for grade 1."],
+   ["esc","If symptoms persist or progress, treat as Moderate"]],
+  src:"SmPC MabThera IV, updated 23 Jun 2026 [1]; UK SACT Board, 8 Aug 2025 [4]; Northern Cancer Alliance 2018, expired [6]; BC Cancer 2025 [14]."},
+ moderate:{n:2,name:"Moderate",ctcae:"CTCAE grade 2",cls:"tb2",c:"c2",icon:"\u2461",
+  line:"Rigors, fever, hives, mild breathlessness",
+  signs:["Rigors, or temperature over 38 \u00b0C","Widespread hives, itch or flushing","Mild breathlessness without wheeze; throat tightness","Chest discomfort, back or tummy pain, vomiting","Mild drop in blood pressure (under 20 mmHg)","Sense of impending doom"],
+  acts:[
+   ["stop","STOP the infusion (stop the pump yourself); keep IV access; do not flush the SACT line"],
+   ["stay","Stay with the patient; ABCDE; observations and NEWS2"],
+   ["review","Call for medical review","F2 or above (Kent and Medway 2024) or ST3 or above (Northern Cancer Alliance 2018). Follow your trust."],
+   ["cpm","Chlorphenamine 10 mg IV (as prescribed / per PGD)"],
+   ["hc","Hydrocortisone 100 mg IV (as prescribed / per PGD)","UK variation: 100 mg (UK SACT Board, NCA) to 200 mg (Kent and Medway). Follow your trust."],
+   ["fluid","IV fluids if hypotensive (as prescribed)"],
+   ["para","Paracetamol 1 g if required (as prescribed / per PGD)","IV 15 mg/kg if under 51 kg. Allow for premedication already given."],
+   ["o2","Oxygen if SpO2 is below 95% with breathlessness (per local policy)","NCA 2018: 2 L/min by nasal cannula or 24% by face mask."],
+   ["emesis","Ondansetron 8 mg for nausea (as prescribed / per PGD)","Northern Cancer Alliance 2018 (expired); local protocols vary."],
+   ["obs","Observations every 15 to 30 min until settled, then every 30 to 60 min","Northern Cancer Alliance 2018; follow local policy."],
+   ["worse","If no response or any deterioration, manage as anaphylaxis"]],
+  src:"UK SACT Board, 8 Aug 2025 [4]; Northern Cancer Alliance 2018, expired [6]; Kent and Medway network pathway v6, Nov 2024 [7]; Royal Cornwall 2023 [10]."},
+ severe:{n:3,name:"Severe",ctcae:"CTCAE grade 3",cls:"tb3",c:"c3",icon:"\u2462",
+  line:"Wheeze, low oxygen, swelling, low blood pressure",
+  signs:["Wheeze, bronchospasm, or breathless at rest","SpO2 below 94%","Swelling of the face, lips or around the eyes","Symptomatic low blood pressure (drop over 20 mmHg)","Severe widespread rash; temperature over 40 \u00b0C; severe rigors","Not settling, getting worse, or coming back after improving"],
+  acts:[
+   ["stop","STOP the infusion immediately (stop the pump yourself)"],
+   ["help","Call for help (critical outreach or resus team where available)"],
+   ["abcde","ABCDE; lie flat (sit up if breathless)"],
+   ["o2","Oxygen; high-flow if hypoxic"],
+   ["fluid","IV fluids for hypotension (as prescribed)"],
+   ["salb","Nebulised salbutamol 5 mg for wheeze (as prescribed / per PGD)","UK variation: 2.5 to 5 mg (Kent and Medway). Follow your trust."],
+   ["cpm","Chlorphenamine 10 mg IV (as prescribed / per PGD)"],
+   ["hc","Hydrocortisone 100 mg IV (as prescribed / per PGD)","UK variation: 100 to 200 mg. Follow your trust."],
+   ["tls","Send bloods for tumour lysis: U&E, urate, calcium, phosphate, LDH","SmPC: evaluate for tumour lysis in NHL."],
+   ["cxr","Chest X-ray for pulmonary infiltrates","SmPC. Early improvement may be followed by deterioration: keep monitoring."],
+   ["review","Medical review is mandatory; no restart without a senior medical decision"],
+   ["toana","Any airway, breathing or circulation problem: manage as anaphylaxis","UK SACT Board: a serious reaction should be managed as if it were anaphylaxis."]],
+  src:"SmPC MabThera IV, updated 23 Jun 2026 [1]; UK SACT Board, 8 Aug 2025 [4]; UKONS acute oncology guidelines v4.0, 13 Feb 2023 [5]; Northern Cancer Alliance 2018, expired [6]."},
+ ana:{n:4,name:"Anaphylaxis",ctcae:"CTCAE grade 3 to 4",cls:"tb4",c:"c4",icon:"\u2463",
+  line:"Airway, breathing or circulation problem",
+  signs:["Sudden airway problem: swelling of tongue or throat, hoarse voice, stridor","Sudden breathing problem: wheeze, working hard to breathe, SpO2 below 94%","Circulation problem: pale, clammy, low blood pressure, fast pulse, collapse","Confusion or sense of impending doom","Usually with skin or mucosal changes; usually within minutes of starting"],
+  acts:[
+   ["help","Call for help (resus team or ambulance)"],
+   ["stop","Stop the infusion (stop the pump yourself)"],
+   ["flat","Lie flat, legs raised (sit up if breathing is easier); do not stand the patient up"],
+   ["a_adr","Adrenaline 500 micrograms IM = 0.5 mL of 1 mg/mL (1:1000), outer (anterolateral) mid-thigh (as prescribed / per PGD); repeat after 5 min if no improvement"],
+   ["a_o2","High-flow oxygen 15 L/min by non-rebreathe mask"],
+   ["a_fluid","IV fluid bolus: crystalloid 500 to 1000 mL for an adult (as prescribed)"],
+   ["a_mon","Monitor: pulse oximetry, ECG, blood pressure"],
+   ["a_tryp","Mast cell tryptase: first sample as soon as possible after treatment starts; second 1 to 2 h after onset; third after 24 h"],
+   ["a_rev","Senior review; no further SACT until discussed with the acute oncology or haematology team"]],
+  src:"Resuscitation Council UK, May 2021 [3]; UK SACT Board, 8 Aug 2025 [4]; UKONS v4.0, 13 Feb 2023 [5]; Kent and Medway v6, Nov 2024 [7]."}
+};
+var RX_OTHER=[
+ {id:"tls",name:"Tumour lysis (TLS)",cls:"tbT",c:"cT",line:"Seen with severe reactions; high tumour burden",
+  signs:["Tingling, muscle cramps, spasm or weakness","Nausea, vomiting, reduced urine or flank pain","Blood tests: high potassium, phosphate, urate, creatinine and LDH; low calcium"],
+  acts:["Tell the doctor urgently","Bloods: U&E, urate, calcium, phosphate, LDH","Hydration, allopurinol or rasburicase are senior medical decisions","High-risk patients (SmPC): the prescriber may slow the first infusion or split the dose. The app suggests no rate."],
+  note:"The BSH TLS guideline (Sept 2025) was not fully reviewed for this app, so no thresholds or doses from it are shown.",
+  src:"SmPC MabThera IV, updated 23 Jun 2026 [1]; Northern Cancer Alliance 2018, expired [6]; British Society for Haematology, 3 Sep 2025 [17] (landing page only)."},
+ {id:"cardiac",name:"Cardiac events",cls:"tbC",c:"cC",line:"Chest pain, palpitations, fainting",
+  signs:["Chest pain or tightness","Palpitations or irregular pulse","Fainting or near-fainting","Breathlessness; high or low blood pressure"],
+  acts:["Stop the infusion (stop the pump yourself); medical review","Treat chest pain as cardiac until proven otherwise: urgent ECG, troponin and urgent assessment (UKONS)","Patients with known heart disease need close monitoring (SmPC)","Before the next infusion: the prescriber decides about withholding antihypertensives (SmPC suggests 12 h)"],
+  note:"",
+  src:"SmPC MabThera IV, updated 23 Jun 2026 [1]; UKONS v4.0, 13 Feb 2023 [5]; eviQ 125 [13]."},
+ {id:"delayed",name:"After the infusion (2 to 24 h)",cls:"tbD",c:"cD",line:"Late reactions can start hours later",
+  signs:["Fever, chills, headache or dizziness","Breathless or wheezy; feeling sick","Rash or itch","Swelling of tongue, throat or lips; chest tightness or pain"],
+  acts:["Tell the patient to ring the 24-hour advice line if any of these start","UKONS grade 1 to 2: telephone or review within 24 h"],
+  note:"",
+  src:"Kent and Medway pathway v6, Nov 2024 [7]; UKONS v4.0, 13 Feb 2023 [5]; Royal Marsden patient information, Nov 2022 [11]."}
+];
+var RX_REFS=[
+ "[1] Roche (2026) MabThera 500 mg concentrate for solution for infusion: SmPC. Electronic Medicines Compendium, updated 23 Jun 2026. medicines.org.uk/emc/product/793/smpc",
+ "[2] Roche (2026) MabThera 1400 mg solution for subcutaneous injection: SmPC. emc, updated 23 Jun 2026. medicines.org.uk/emc/product/5333/smpc",
+ "[3] Resuscitation Council UK (2021) Emergency treatment of anaphylaxis: guidelines for healthcare providers. May 2021. resus.org.uk",
+ "[4] UK SACT Board (2025) Anaphylaxis and hypersensitivity reactions: guidance for adults receiving IV SACT for solid tumours. v1.0, 8 Aug 2025. uksactboard.org (solid-tumour scope; section 5.3 names rituximab)",
+ "[5] UK Oncology Nursing Society (2023) Acute oncology initial management guidelines. v4.0, 13 Feb 2023. kmcc.nhs.uk",
+ "[6] Northern Cancer Alliance (2018) Policy for the management of allergic reactions and/or hypersensitivity due to chemotherapy and monoclonal antibodies. v1.5, expired Jan 2021 (comparison only).",
+ "[7] Network Chemotherapy Nursing Group, Kent and Medway (2024) SACT care pathway: hypersensitivity reactions and anaphylaxis. v6, Nov 2024 (review due Nov 2026). kmcc.nhs.uk",
+ "[8] Rosello S et al. (2017) Management of infusion reactions to systemic anticancer therapy: ESMO Clinical Practice Guidelines. Ann Oncol 28(Suppl 4):iv100-iv118. doi:10.1093/annonc/mdx216",
+ "[9] NSSG Haematology, Lymphoma Group (2017) Guidelines for administration of rapid infusion rituximab (N.28e TVCN). v5.0, review date May 2019.",
+ "[10] Royal Cornwall Hospitals NHS Trust (2023) SACT-related hypersensitivity reactions in adults: clinical guideline. v1.0, May 2023.",
+ "[11] The Royal Marsden NHS Foundation Trust (2022) Rituximab treatment: patient information (LY-0346-04). Revised Nov 2022.",
+ "[12] Genentech (2021) RITUXAN prescribing information. Revised 12/2021. US FDA.",
+ "[13] Cancer Institute NSW. eviQ: 125 NHL rituximab; 1831 Hypersensitivity reaction. eviq.org.au",
+ "[14] BC Cancer (2025/2026) Protocol summaries SCDRUGRX (1 Sep 2025) and LYRITUX (1 Apr 2026). bccancer.bc.ca",
+ "[15] Kent and Medway SACT protocol (2019) R-IVE prescription proforma, haem-nhl-084 v1.",
+ "[16] National Cancer Institute (2017) Common Terminology Criteria for Adverse Events (CTCAE) v5.0. 27 Nov 2017.",
+ "[17] British Society for Haematology (2025) Updated guidelines for the diagnosis and management of tumour lysis syndrome in adults and children. 3 Sep 2025 (landing page only).",
+ "[18] NSSG Haematology, Lymphoma and CLL (n.d.) Nursing care plan: R-mini-CHOP.",
+ "[19] MHRA (2012) Reporting suspected adverse drug reactions to vaccines and biological medicines. Drug Safety Update 6(4):H1. Yellow Card: yellowcard.mhra.gov.uk"
+];
+/* symptom checklist: [id, label, level (1 to 4), system, category flag] */
+var RX_SYM=[
+ {g:"Skin and face",i:[
+  ["flush","Flushing or warmth",1,"skin"],["itch","Mild itch, or a small brief rash",1,"skin"],
+  ["urt","Widespread hives, itch or flushing",2,"skin"],
+  ["angio","Swelling of face, lips or around the eyes",3,"skin"],["rashbig","Severe widespread rash",3,"skin"]]},
+ {g:"Airway and breathing",i:[
+  ["throatirr","Runny nose or mild throat irritation",1,"mild"],
+  ["throattight","Throat tightness",2,"airway"],["breathmild","Mild breathlessness, no wheeze",2,"breath"],
+  ["wheeze","Wheeze or noisy breathing",3,"breath"],["breathrest","Breathless at rest, or SpO2 below 94%",3,"breath"],
+  ["airway","Swelling of tongue or throat, hoarse voice or stridor",4,"airway"]]},
+ {g:"Circulation and chest",i:[
+  ["dizzy","Mild dizziness",1,"mild"],["bpmild","Mild drop in blood pressure (under 20 mmHg)",2,"circ"],
+  ["chest","Chest pain or tightness",2,"circ","cardiac"],["palp","Palpitations, irregular pulse or fainting",2,"circ","cardiac"],
+  ["bpsym","Symptomatic low blood pressure (drop over 20 mmHg)",3,"circ"],
+  ["collapse","Pale, clammy, confused or collapsed",4,"circ"]]},
+ {g:"General and tummy",i:[
+  ["chills","Mild chills or shivering",1,"mild"],["head","Headache",1,"mild"],["nausea","Mild nausea",1,"mild"],
+  ["rigors","Rigors, or temperature over 38 \u00b0C",2,"gen"],["vomit","Vomiting, back or tummy pain",2,"gen"],["doom","Sense of impending doom",2,"gen"],
+  ["fever40","Temperature over 40 \u00b0C, or severe rigors",3,"gen"],["worse","Not settling, getting worse or coming back",3,"gen"]]},
+ {g:"Possible tumour lysis",i:[
+  ["tlsa","Tingling, cramps, spasm or weakness",2,"gen","tls"],["tlsb","Reduced urine or flank pain",2,"gen","tls"]]}
+];
+var RX_SYMI={};RX_SYM.forEach(function(g){g.i.forEach(function(s){RX_SYMI[s[0]]={id:s[0],label:s[1],l:s[2],sys:s[3],cat:s[4]||""};});});
+
 /* ---------- helpers ---------- */
 function $(id){return document.getElementById(id);}
 function pad2(n){return n<10?"0"+n:String(n);}
@@ -655,7 +918,7 @@ function nowClock(){var d=new Date();return pad2(d.getHours())+":"+pad2(d.getMin
 
 /* ---------- state ---------- */
 var S={regimen:"single",level:"500",stage:"first",bagSel:"auto",rowSel:"auto",bsa:"",bsaMode:"calc",wt:"",ht:"",start:"",vol:"",ref:"600",tab:"setup"};
-var T={started:false,running:false,base:0,t0:0,idx:0,phaseStart:0,status:"run",phases:[],walls:[],sound:false,vib:false,startMin:null};
+var T={started:false,running:false,base:0,t0:0,idx:0,phaseStart:0,status:"run",phases:[],walls:[],sound:false,vib:false,startMin:null,reactions:[]};
 
 function derive(){
   var isSplit=S.regimen!=="single";
@@ -1059,7 +1322,7 @@ function renderRun(){
   if(T.started&&!L.ended&&!pumpOk(idx))cdl.textContent+=" · pump not confirmed";
   $("totalT").textContent="Total time "+fmtMSfloor(el);
   var pn=$("pauseNote"),isPaused=T.started&&!T.running&&!L.ended&&T.pausedAt;
-  pn.hidden=!isPaused;if(isPaused)pn.textContent="⏸ Paused since "+tStr(T.pausedAt)+". Timer frozen.";
+  pn.hidden=!isPaused;if(isPaused)pn.textContent="⏸ Paused since "+tStr(T.pausedAt)+". Timer frozen."+(rxList().length?" "+RX_RESTART:"");
   // prompt
   var pr=$("prompt");
   var showPrompt=T.started&&(T.status==="due"||T.status==="held");
@@ -1120,8 +1383,8 @@ function renderRun(){
 
 /* ---------- alerts ---------- */
 var audioCtx=null;
-function beep(){
-  if(!T.sound)return;
+function beep(force){
+  if(!T.sound&&!force)return;
   try{
     audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();
     var t=audioCtx.currentTime;
@@ -1170,9 +1433,9 @@ function stepName(idx,n,title,mg,ml){
 }
 function logEv(type,label,o){
   o=o||{};
-  var ph=T.phases[T.idx]||{};
+  var ph=o.snap||T.phases[T.idx]||{},sx=o.snap?o.snap.idx:T.idx,sn=o.snap?o.snap.n:T.phases.length;
   L.events.push({type:type,label:label,detail:o.detail||"",wall:o.wall!==undefined?o.wall:Date.now(),el:o.el!==undefined?o.el:elapsed(),
-    mg:ph.mg===undefined?null:ph.mg,ml:ph.ml===undefined?null:ph.ml,idx:T.idx,n:T.phases.length,title:ph.title||""});
+    mg:ph.mg===undefined?null:ph.mg,ml:ph.ml===undefined?null:ph.ml,idx:sx,n:sn,title:ph.title||""});
   renderLog();
 }
 function evRate(e){return stepName(e.idx,e.n,e.title,e.mg,e.ml)+", "+(rateTxt(e.mg,e.ml)||"rate not set");}
@@ -1239,6 +1502,9 @@ function summaryRows(){
   rows.push(["Pump checks",pc+" of "+(T.pump||[]).length+" confirmed"]);
   rows.push(["Obs ticks",oc+" of "+(T.obs||[]).length+" done"]);
   rows.push(["Est. volume infused",est.ml===null?"not available (rate set in mg/hr only)":"about "+Math.round(est.ml)+" ml (estimate)"]);
+  var rl=rxList();
+  rows.push(["Reactions",rl.length?rl.length+": "+rl.map(function(R){var d=rxTD(R);return "provisional "+d.name.toLowerCase()+" ("+d.ctcae+"), "+(R.outcome||"outcome not recorded");}).join("; "):"none recorded"]);
+  if(rl.length)rows.push(["Restart",RX_RESTART]);
   return rows;
 }
 function recordItems(){
@@ -1267,6 +1533,7 @@ function recordItems(){
   A("kv","Reason",stopped?E.reason:"Completed as planned");
   if(stopped)A("kv","Comment",E.comment||"(none)");
   A("kv","Rate at the end",stepName(T.idx,T.phases.length,ph.title,ph.mg,ph.ml)+": "+(rateTxt(ph.mg,ph.ml)||"-"));
+  A("kv","Reactions recorded",rxList().length?String(rxList().length)+" (see Reaction record below)":"none");
   A("h","Settings used");
   A("kv","Regimen",REG_LABEL[S.regimen]);
   A("kv","Infusion",stageLabel(d));
@@ -1282,6 +1549,7 @@ function recordItems(){
   A("kv","Est. volume infused",est.ml===null?"not available (rate set in mg/hr only)":"about "+Math.round(est.ml)+" ml");
   A("kv","Est. drug dose given",est.mg===null?"not available (rate set in ml/hr only)":"about "+Math.round(est.mg)+" mg");
   A("small","ESTIMATE ONLY. Calculated from the set rates multiplied by running time; paused time is excluded. It is not a pump reading. Check the pump's volume infused and the bag.");
+  rxRecordItems(A);
   A("h","Pump checks and observations (tick-boxes only; no values recorded)");
   (T.pump||[]).forEach(function(pp,i){
     var ph2=T.phases[i];if(!ph2)return;
@@ -1433,7 +1701,9 @@ function renderEnd(){
   h+='<p class="warnline">Nothing is stored on this device. Download or copy the record before you close or reload this page.</p>';
   h+='<dl class="kv">';
   summaryRows().forEach(function(r){h+='<dt>'+esc(r[0])+'</dt><dd>'+esc(r[1])+'</dd>';});
-  h+='</dl><p class="hint">Volume is an estimate from the set rates and running time (paused time excluded). It is not a pump reading.</p></div>';
+  h+='</dl><p class="hint">Volume is an estimate from the set rates and running time (paused time excluded). It is not a pump reading.</p>';
+  if(rxList().length)h+='<p class="warnline" style="margin-top:10px">'+(rxList().length>1?'Reactions are':'A reaction is')+' in the record as provisional, nurse-recorded entries: copy to the clinical record. A reaction may change premedication and the rate at the next infusion: check local protocol. Consider a Yellow Card report and your incident form.</p>';
+  h+='</div>';
   h+='<div class="card"><h3>Save the record</h3>';
   h+='<div class="row"><button type="button" class="btn primary" data-act="pdf">⬇ Download PDF</button><button type="button" class="btn" data-act="txt">⬇ Download text (.txt)</button></div>';
   h+='<div class="row" style="margin-top:10px"><button type="button" class="btn" data-act="copy">📋 Copy to clipboard</button>'+(navigator.share?'<button type="button" class="btn" data-act="share" id="btnShare">↗ Share…</button>':'')+'</div>';
@@ -1503,6 +1773,7 @@ function renderStop(){
     var est=estimate(ST.stopEl);
     h+='<h2 id="stTitle" tabindex="-1">End the infusion now?</h2>';
     h+='<p class="warnline">This cannot be undone. The timer will stop and lock, and the record will be created.</p>';
+    if(RX.cur&&!RX.cur.confirmed&&rxHasData(RX.cur))h+='<p class="warnline" style="margin-top:8px">A reaction draft is open but not confirmed, so it will not be in the record. Cancel, then open the Reaction bar and confirm it first if it is real.</p>';
     h+='<dl class="kv"><dt>Stop time</dt><dd>'+esc(dtStr(ST.stopAt))+'</dd><dt>Running time</dt><dd>'+fmtHMS(ST.stopEl)+'</dd><dt>Reason</dt><dd>'+esc(ST.reason)+'</dd><dt>Comment</dt><dd>'+esc(oneLine(ST.comment)||"(none)")+'</dd><dt>Est. volume</dt><dd>'+(est.ml===null?"not available":"about "+Math.round(est.ml)+" ml (estimate)")+'</dd></dl>';
     h+='<button type="button" class="btn danger big" data-act="confirmEnd">⏹ Yes, end infusion</button>';
     h+='<div class="row2"><button type="button" class="btn" data-act="toReason">← Back</button><button type="button" class="btn" data-act="cancel">Cancel</button></div>';
@@ -1520,6 +1791,8 @@ function confirmEnd(){
   logEv("stop","Infusion ended (stopped)",{wall:ST.stopAt,el:ST.stopEl,detail:ST.reason+(comment?": "+comment:"")});
   L.ended={kind:"stopped",wall:ST.stopAt,el:ST.stopEl,reason:ST.reason,comment:comment,early:early,confirmWall:Date.now()};
   T.base=ST.stopEl;T.running=false;T.status="ended";T.pausedAt=0;wakeOff();
+  if(ST.reason==="Infusion reaction")rxList().forEach(function(R){if(!R.outcome){R.outcome="Infusion stopped";R.outcomeAuto=true;}});
+  rxHardClose();
   $("stopSheet").hidden=true;
   update();renderEnd();showTab("run");
   var t=$("endTitle");if(t)t.focus();
@@ -1565,7 +1838,7 @@ function renderChecks(){
   else h+='<button type="button" class="chk need'+(p&&p.nagged?' nag':'')+'" id="btnPump"><span class="box" aria-hidden="true"></span><span class="t"><b>Pump now set to '+esc(pumpRateText(i))+'</b><small>'+(T.pumpWarn?'Confirm the pump before stepping up.':(p&&p.nagged?'Gentle reminder: the pump check is still waiting. Tap when it is set.':'Tap to confirm the pump matches.'))+'</small></span></button>';
   if(ob){
     if(ob.okWall)h+='<div class="chk ok"><span class="ic" aria-hidden="true">✔</span><span class="t"><b>Obs done</b><small>'+esc(ob.label)+' at '+tStr(ob.okWall)+'</small></span></div>';
-    else h+='<button type="button" class="chk need" id="btnObs"><span class="box" aria-hidden="true"></span><span class="t"><b>Obs done</b><small>Observations due: '+esc(ob.label.toLowerCase())+'. Tick when done. No values are entered here.</small></span></button>';
+    else h+='<button type="button" class="chk need" id="btnObs"><span class="box" aria-hidden="true"></span><span class="t"><b>Obs done</b><small>Observations due: '+esc(ob.label.toLowerCase())+'. Tick when done. No values are entered here.</small><small class="watch">'+esc(RX_WATCH)+'</small></span></button>';
   }
   box.innerHTML=h;
 }
@@ -1691,20 +1964,21 @@ function lockInfo(){
 }
 function lockNow(){
   if(isLocked)return;
-  isLocked=true;lockPrev=document.activeElement;
+  isLocked=true;lockPrev=document.activeElement;document.body.classList.add("is-locked");
   LOCKED_EL.forEach(function(s){var e=document.querySelector(s);if(e)e.inert=true;});
   $("lockOv").hidden=false;lockInfo();
   try{$("lockBtn").focus();}catch(e){}
 }
 function unlock(){
   if(!isLocked)return;
-  isLocked=false;lastAct=Date.now();
+  isLocked=false;lastAct=Date.now();document.body.classList.remove("is-locked");
   $("lockOv").hidden=true;
   LOCKED_EL.forEach(function(s){var e=document.querySelector(s);if(e)e.inert=false;});
   try{if(lockPrev&&document.body.contains(lockPrev))lockPrev.focus();}catch(e){}
 }
 function idleCheck(){
   if(isLocked){lockInfo();return;}
+  if(RX.open||RX.ana){lastAct=Date.now();return;}
   if(PREF.idle>0&&Date.now()-lastAct>=PREF.idle*60000)lockNow();
 }
 /* ---------- auto-clear after saving ---------- */
@@ -1754,7 +2028,7 @@ function wakeOff(){try{if(wake){wake.release();wake=null;}}catch(e){}}
 function startPause(){
   if(!T.started){
     var d=derive();if(!d.phases.length)return;
-    L.events=[];L.ended=null;L.saved=false;
+    L.events=[];L.ended=null;L.saved=false;T.reactions=[];rxHardClose();
     T.started=true;T.phases=d.phases;T.startMin=d.startMin;T.idx=0;T.base=0;T.phaseStart=0;T.status="run";T.walls=[Date.now()];T.pausedAt=0;
     L.clearAt=0;L.undone=false;T.pump=[newPump()];T.pumpWarn=false;T.obs=[{kind:"start",idx:0,label:"At start",wall:Date.now(),okWall:0}];lastChecksSig="";
     T.running=true;T.t0=Date.now();wakeOn();
@@ -1771,7 +2045,7 @@ function startPause(){
 var resetArmed=null;
 function clearSession(){
   T.started=false;T.running=false;T.base=0;T.idx=0;T.phaseStart=0;T.status="run";T.phases=[];T.walls=[];T.pausedAt=0;
-  L.events=[];L.ended=null;L.saved=false;L.clearAt=0;L.undone=false;T.pump=[];T.obs=[];T.pumpWarn=false;lastChecksSig="";wakeOff();
+  L.events=[];L.ended=null;L.saved=false;L.clearAt=0;L.undone=false;T.pump=[];T.obs=[];T.pumpWarn=false;lastChecksSig="";wakeOff();T.reactions=[];rxHardClose();rxStatUpdate();
   lastPathSig="";renderLog();update();
 }
 function resetTimer(){
@@ -1811,24 +2085,492 @@ function tick(){
     if(ph.dur!==null&&elapsed()-T.phaseStart>=ph.dur*60000){T.status="due";obsOpen();celebrate();}
   }
   pumpNagCheck();
+  rxTick();rxStatUpdate();
   if(T.started||S.tab==="run")renderRun();
   idleCheck();updateClearBar();
+}
+
+/* ---------- infusion reactions: reference tab ---------- */
+function rxList(){return T.reactions||[];}
+function rxRefCard(td,key){
+  var h='<details class="rxc '+td.c+'"'+(key==="moderate"?'':'')+'><summary><span class="tbadge '+td.cls+'">'+(td.icon?td.icon+' ':'')+esc(td.name)+'</span><span class="st">'+esc(td.line)+'</span><span class="ch" aria-hidden="true">\u25be</span></summary><div class="rxb">';
+  h+='<h4>What you may see</h4><ul>'+td.signs.map(function(s){return '<li>'+esc(s)+'</li>';}).join("")+'</ul>';
+  h+='<h4>Do now</h4><ul>'+td.acts.map(function(a){
+    var lab=typeof a==="string"?a:a[1],nt=typeof a==="string"?"":a[2];
+    return '<li>'+esc(lab)+(nt?'<span class="uk">'+esc(nt)+'</span>':'')+'</li>';}).join("")+'</ul>';
+  if(td.note)h+='<p class="uk" style="margin:8px 0 0;font-weight:700;font-size:12.5px">'+esc(td.note)+'</p>';
+  if(td.n!==1)h+='<p class="rxrest" style="margin:10px 0 0">'+esc(RX_RESTART)+'</p>';
+  h+='<p class="src">Source: '+esc(td.src)+'</p></div></details>';
+  return h;
+}
+function renderRxRef(){
+  var h='<div class="rxdisc" role="note">'+esc(RX_DISC)+'</div>';
+  h+='<div class="card rxref"><h2>Infusion reactions</h2><p class="lead">Most patients have some reaction at the first infusion and most are mild (SmPC: 77% any reaction, about 10% severe). Reactions usually start 30 min to 2 h in; true anaphylaxis typically within minutes. Tiers are provisional: your clinical judgement decides. All drug doses are as written in the named sources, to be given as prescribed or per your PGD.</p>';
+  RX_KEYS.forEach(function(k){h+=rxRefCard(RX_TIERS[k],k);});
+  RX_OTHER.forEach(function(o){
+    h+=rxRefCard({c:o.c,cls:o.cls,name:o.name,line:o.line,signs:o.signs,acts:o.acts,note:o.note,src:o.src,n:o.id==="delayed"?1:2},o.id);
+  });
+  h+='<div class="rxnote"><span class="rxrest">'+esc(RX_RESTART)+'</span> The app never suggests or calculates a restart rate. Rates always come straight from the chart.</div>';
+  h+='<h3 style="margin:16px 0 0;font-size:16px">References</h3><ul class="rxrefs">'+RX_REFS.map(function(r){return '<li>'+esc(r)+'</li>';}).join("")+'</ul>';
+  h+='<p class="hint">Sources opened and read on '+RX_REVIEWED+'. Content last reviewed '+RX_REVIEWED+'. Some sources are older or expired (flagged above). Not yet signed off by pharmacy or SACT governance: check with your governance lead before wider use.</p></div>';
+  $("rxRef").innerHTML=h;
+}
+
+/* ---------- infusion reactions: record logic ---------- */
+var RX={cur:null,open:false,ana:false,opener:null,seq:0,discardT:null,sig:""};
+var RX_OUT=["Resolved, continued on medical instruction","Infusion stopped","Discontinued (treatment not to continue)","Transferred or escalated (resus / ambulance)"];
+function rxNew(){return {id:++RX.seq,sym:{},tierSel:0,wall:0,el:0,snap:null,acts:{},adr:[],notes:"",doc:null,outcome:"",outcomeAuto:false,yc:false,inc:false,pauseState:"",confirmed:0,adrDue:0,adrNext:0,adrAlarmed:false};}
+function rxTouch(R){
+  if(R.wall)return;
+  var ph=T.phases[T.idx]||{};
+  R.wall=Date.now();R.el=elapsed();
+  R.snap={idx:T.idx,n:T.phases.length,title:ph.title||"",mg:ph.mg===undefined?null:ph.mg,ml:ph.ml===undefined?null:ph.ml};
+}
+function rxCalc(R){
+  var mx=0,abc=false,skin=false;
+  Object.keys(R.sym).forEach(function(id){
+    var s=RX_SYMI[id];if(!s||!R.sym[id])return;
+    if(s.l>mx)mx=s.l;
+    if(s.l>=3&&(s.sys==="airway"||s.sys==="breath"||s.sys==="circ"))abc=true;
+    if(s.sys==="skin")skin=true;
+  });
+  if(mx===3&&abc&&skin)mx=4;
+  return mx;
+}
+function rxTier(R){return R.tierSel||rxCalc(R);}
+function rxTD(R){var t=rxTier(R);return t?RX_TIERS[RX_KEYS[t-1]]:null;}
+function rxSymLabels(R){
+  var out=[];
+  RX_SYM.forEach(function(g){g.i.forEach(function(s){if(R.sym[s[0]])out.push(s[1]);});});
+  return out;
+}
+function rxHighest(R){
+  var best=null;
+  Object.keys(R.sym).forEach(function(id){var s=RX_SYMI[id];if(s&&R.sym[id]&&(!best||s.l>best.l))best=s;});
+  return best;
+}
+function rxActLabel(id,key){
+  var td=RX_TIERS[key]||RX_TIERS.moderate,a;
+  for(var i=0;i<td.acts.length;i++)if(td.acts[i][0]===id)return td.acts[i][1];
+  return id;
+}
+function rxAdrLabel(n){return "Adrenaline 500 micrograms IM, dose "+n+" (as prescribed / per PGD)";}
+function rxActList(R){
+  var out=[];
+  Object.keys(R.acts).forEach(function(id){var a=R.acts[id];out.push({label:a.label,wall:a.wall,el:a.el});});
+  R.adr.forEach(function(a,i){out.push({label:rxAdrLabel(i+1),wall:a.wall,el:a.el});});
+  out.sort(function(a,b){return a.wall-b.wall;});
+  return out;
+}
+function rxLogA(R,label,wall,el){logEv("rxact","Reaction action: "+label,{wall:wall,el:el,snap:R.snap});}
+function rxApplyPause(R){
+  if(!T.started||L.ended)return;
+  var t=rxTier(R);
+  if(t>=3){
+    if(R.pauseState!=="auto"&&R.pauseState!=="undone"){
+      if(T.running)startPause();
+      R.pauseState="auto";R.pausedAt=Date.now();
+    }
+  }else if(t===2&&R.pauseState==="")R.pauseState="asked";
+}
+function rxTimerR(){
+  var l=rxList().slice();if(RX.cur)l.push(RX.cur);
+  for(var i=0;i<l.length;i++)if(l[i].adrDue>0)return l[i];
+  return null;
+}
+function rxHasData(R){return !!(R.wall||R.notes||Object.keys(R.acts).length||R.adr.length);}
+
+/* open / close */
+function rxPick(){
+  if(RX.cur&&(!RX.cur.confirmed||RX.cur.adrDue>0))return RX.cur;
+  var t=rxTimerR();if(t)return t;
+  return rxNew();
+}
+function openRx(R){
+  if(!T.started||L.ended)return;
+  RX.cur=(R&&!(RX.cur&&!RX.cur.confirmed&&rxHasData(RX.cur)))?R:rxPick();
+  RX.opener=document.activeElement;
+  RX.open=true;$("rxSheet").hidden=false;rxRender(true);
+}
+function rxDrop(){
+  var R=RX.cur;
+  if(R&&(R.confirmed?R.adrDue===0:!rxHasData(R)))RX.cur=null;
+}
+function closeRx(){
+  RX.open=false;RX.ana=false;
+  $("rxSheet").hidden=true;$("anaScreen").hidden=true;
+  clearTimeout(RX.discardT);RX.discardT=null;
+  rxDrop();rxBarUpdate();
+  var o=RX.opener&&document.body.contains(RX.opener)&&!RX.opener.hidden?RX.opener:$("rxBar");
+  try{o.focus();}catch(e){}
+}
+function openAna(){
+  var R=RX.cur;if(!R)return;
+  rxTouch(R);R.tierSel=4;rxApplyPause(R);
+  RX.ana=true;$("anaScreen").hidden=false;
+  rxRenderAna(true);rxRender(false);
+}
+function closeAna(toSheet){
+  RX.ana=false;$("anaScreen").hidden=true;
+  if(toSheet&&RX.open){rxRender(true);}
+  else if(!toSheet)closeRx();
+}
+function rxHardClose(){
+  RX.cur=null;RX.open=false;RX.ana=false;
+  $("rxSheet").hidden=true;$("anaScreen").hidden=true;
+  $("rxBody").innerHTML="";$("anaBody").innerHTML="";
+  clearTimeout(RX.discardT);RX.discardT=null;
+  rxBarUpdate();
+}
+
+/* confirm: nothing is recorded before this */
+function rxConfirm(R){
+  if(R.confirmed||!rxTier(R)||!T.started||L.ended)return;
+  rxTouch(R);
+  R.confirmed=Date.now();T.reactions.push(R);
+  var td=rxTD(R);
+  logEv("reaction","Reaction confirmed: provisional "+td.name+" ("+td.ctcae+")",{wall:R.confirmed,snap:R.snap,
+    detail:"Onset recorded "+tStr(R.wall)+". Symptoms: "+(rxSymLabels(R).join("; ")||"none ticked")+"."});
+  rxActList(R).forEach(function(a){rxLogA(R,a.label,a.wall,a.el);});
+  if(R.doc)logEv("rxact","Doctor informed",{wall:R.doc.wall,el:R.doc.el,snap:R.snap});
+  L.events.sort(function(a,b){return a.wall-b.wall;});renderLog();
+}
+function rxToStop(){
+  var R=RX.cur||rxList()[rxList().length-1];
+  if(!T.started||L.ended)return;
+  var td=R?rxTD(R):null;
+  unlock();
+  rxHardClose();
+  ST={step:"reason",reason:"Infusion reaction",comment:"Infusion reaction"+(td?", provisional "+td.name.toLowerCase()+" (see reaction record).":"."),stopAt:Date.now(),stopEl:elapsed()};
+  stopOpener=$("rxBar");
+  $("stopSheet").hidden=false;renderStop();
+}
+
+/* adrenaline repeat timer (the only sound / vibration in the reaction feature; started by the user) */
+function rxPrimeAudio(){
+  try{audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==="suspended")audioCtx.resume();}catch(e){}
+}
+function rxAlarm(){
+  beep(true);
+  if(navigator.vibrate){try{navigator.vibrate([300,150,300,150,400]);}catch(e){}}
+}
+function rxAdr(R){
+  rxPrimeAudio();rxTouch(R);
+  var w=Date.now(),e=elapsed();
+  R.adr.push({wall:w,el:e});R.adrDue=w+300000;R.adrNext=0;R.adrAlarmed=false;
+  if(R.confirmed)rxLogA(R,rxAdrLabel(R.adr.length),w,e);
+}
+function rxAdrUndo(R){
+  if(!R.adr.length)return;
+  var a=R.adr.pop();
+  if(R.confirmed)logEv("rxact","Reaction action removed (ticked in error): "+rxAdrLabel(R.adr.length+1),{snap:R.snap});
+  var l=R.adr[R.adr.length-1];
+  R.adrDue=l?l.wall+300000:0;R.adrAlarmed=false;R.adrNext=0;
+}
+function rxCd(left){var s=Math.max(0,Math.ceil(left/1000));return Math.floor(s/60)+":"+pad2(s%60);}
+function rxTick(){
+  var R=rxTimerR();
+  if(R){
+    var left=R.adrDue-Date.now();
+    if(left<=0){
+      var now=Date.now();
+      if(!R.adrAlarmed){R.adrAlarmed=true;R.adrNext=now+30000;rxAlarm();}
+      else if(now>=R.adrNext){R.adrNext=now+30000;rxAlarm();}
+    }
+    rxAnaTimerUI(R);
+  }
+  rxBarUpdate();
+}
+function rxAnaTimerUI(R){
+  if(!RX.ana||RX.cur!==R)return;
+  var cd=$("anaCd"),sub=$("anaCdSub");if(!cd)return;
+  var left=R.adrDue-Date.now(),due=left<=0;
+  var t=due?"Repeat dose due":rxCd(left),c="anacd"+(due?" due":"");
+  if(cd.textContent!==t)cd.textContent=t;
+  if(cd.className!==c)cd.className=c;
+  var s=due?"5 minutes have passed. If there is no improvement, give a second IM adrenaline dose as prescribed / per PGD.":"until a repeat IM adrenaline dose is due if there is no improvement";
+  if(sub&&sub.textContent!==s)sub.textContent=s;
+}
+function rxBarUpdate(){
+  var bar=$("rxBar"),show=!!(T.started&&!L.ended);
+  if(bar.hidden!==!show)bar.hidden=!show;
+  document.body.classList.toggle("rx-on",show);
+  if(!show)return;
+  var R=rxTimerR(),t="Reaction?",s="Tap for checklist",due=false;
+  if(R){
+    var left=R.adrDue-Date.now();
+    if(left<=0){t="Adrenaline repeat due";s="Tap for steps";due=true;}
+    else{t="Reaction? \u00b7 adrenaline repeat in "+rxCd(left);s="Tap for steps";}
+  }else if(RX.cur&&!RX.cur.confirmed&&rxHasData(RX.cur)){s="Draft open \u00b7 tap to continue";}
+  else if(rxList().length){s=rxList().length+" recorded \u00b7 tap for checklist";}
+  var sig=t+"|"+s+"|"+due;
+  if(sig!==RX.sig){RX.sig=sig;$("rxBarT").textContent=t;$("rxBarS").textContent=s;bar.className="rxbar"+(due?" due":"");}
+}
+/* status card on the timer screen once a reaction is confirmed */
+var rxStatSig="";
+function rxStatUpdate(){
+  var c=$("rxStat"),l=rxList(),show=!!(T.started&&!L.ended&&l.length);
+  if(c.hidden!==!show)c.hidden=!show;
+  if(!show){rxStatSig="";return;}
+  var R=l[l.length-1],td=rxTD(R),sig=l.length+"|"+R.confirmed+"|"+td.name+"|"+R.outcome;
+  if(sig===rxStatSig)return;
+  rxStatSig=sig;
+  c.innerHTML='<b>\u26a0 '+(l.length>1?l.length+' reactions recorded. Latest at ':'Reaction recorded at ')+tStr(R.confirmed)+' (provisional '+esc(td.name.toLowerCase())+')</b><br>'+esc(RX_RESTART)+' The app suggests no restart rate.<button type="button" class="btn" data-rxs="open">Open reaction record</button>';
+}
+
+/* ---------- reaction sheet ---------- */
+function rxSymBtn(R,s){
+  var on=!!R.sym[s[0]];
+  return '<button type="button" class="rxsym" role="checkbox" aria-checked="'+on+'" data-rx="sym" data-id="'+s[0]+'" data-f="sym-'+s[0]+'"><span class="box" aria-hidden="true">'+(on?'\u2714':'')+'</span><span>'+esc(s[1])+'</span></button>';
+}
+function rxActBtn(R,a,key){
+  var on=!!R.acts[a[0]];
+  return '<button type="button" class="rxact" role="checkbox" aria-checked="'+on+'" data-rx="act" data-id="'+a[0]+'" data-k="'+key+'" data-f="act-'+a[0]+'"><span class="box" aria-hidden="true">'+(on?'\u2714':'')+'</span><span class="t">'+esc(a[1])+(a[2]?'<small>'+esc(a[2])+'</small>':'')+'</span>'+(on?'<time>'+tStr(R.acts[a[0]].wall)+'</time>':'')+'</button>';
+}
+function rxDocBtn(R){
+  var on=!!R.doc;
+  return '<button type="button" class="rxact" role="checkbox" aria-checked="'+on+'" data-rx="doc" data-f="doc"><span class="box" aria-hidden="true">'+(on?'\u2714':'')+'</span><span class="t">Doctor informed</span>'+(on?'<time>'+tStr(R.doc.wall)+'</time>':'')+'</button>';
+}
+function rxTierLine(R){
+  var td=rxTD(R);
+  return td?'<span class="tbadge '+td.cls+'">'+td.icon+' '+esc(td.name)+'</span> <span class="hint" style="margin:0">provisional \u00b7 '+esc(td.ctcae)+'</span>':'<span class="hint" style="margin:0">No tier yet</span>';
+}
+function rxSheetHTML(){
+  var R=RX.cur,tier=rxTier(R),key=tier?RX_KEYS[tier-1]:"",td=tier?RX_TIERS[key]:null,h="";
+  var view=R.confirmed&&!R.view?"act":(R.view||"sym");
+  h+='<div class="rxtop"><div class="rxhead"><h2 id="rxTitle" tabindex="-1">'+(R.confirmed?'Reaction recorded':'Possible infusion reaction')+'</h2><button type="button" class="btn" data-rx="close" data-f="close">Close</button></div>';
+  h+='<p class="rxpump" role="note">\ud83d\uded1 '+esc(RX_PUMP)+'</p></div>';
+  if(view==="sym"){
+    h+='<button type="button" class="btn rxana" data-rx="ana" data-f="ana" style="margin:0 0 4px">\ud83d\udea8 Anaphylaxis? Open emergency steps</button>';
+    h+='<h3 class="rxsec">1. What are you seeing?</h3><p class="hint" style="margin:0">Tick all that apply. Nothing is recorded until you confirm.</p>';
+    RX_SYM.forEach(function(g){
+      h+='<div class="rxgrp">'+esc(g.g)+'</div><div class="rxsyms">'+g.i.map(function(s){return rxSymBtn(R,s);}).join("")+'</div>';
+    });
+    h+='<div class="rxstickyf"><div class="rxtl">'+rxTierLine(R)+'</div><button type="button" class="btn go" data-rx="view" data-v="act" data-f="next"'+(tier?'':' disabled')+'>See tier and actions \u2192</button></div>';
+    h+='<p class="hint">'+esc(RX_DISC)+'</p>';
+    return h;
+  }
+  /* view: tier, actions, record */
+  h+='<div class="row" style="margin:0 0 4px"><button type="button" class="btn" data-rx="view" data-v="sym" data-f="back">\u2190 Symptoms</button><button type="button" class="btn rxana" data-rx="ana" data-f="ana" style="margin:0;flex:2 1 160px;min-height:52px;font-size:16px;width:auto">\ud83d\udea8 Emergency steps</button></div>';
+  var rl=rxList();
+  var others=rl.filter(function(x){return x!==R;});
+  if(others.length&&(R.confirmed||!rxHasData(R))){
+    h+='<h3 class="rxsec">Recorded this session</h3><ul class="rxlist">'+others.map(function(x){var d=rxTD(x);var i=rl.indexOf(x);return '<li><time>'+tStr(x.confirmed)+'</time> \u00b7 '+esc(d.name)+' ('+esc(d.ctcae)+') \u00b7 '+esc(x.outcome||"outcome not recorded")+' <button type="button" class="btn" style="min-height:40px;margin-left:6px" data-rx="open" data-i="'+i+'">Open</button></li>';}).join("")+'</ul>';
+  }
+  if(R.confirmed){
+    h+='<div class="rxnote"><b>\u2714 Recorded at '+tStr(R.confirmed)+'.</b> Onset '+tStr(R.wall)+', running '+fmtHMS(R.el)+'. Later changes are added to the session log with their time.</div>';
+  }
+  h+='<h3 class="rxsec">2. Provisional tier</h3>';
+  if(td){
+    var hi=rxHighest(R),calc=rxCalc(R);
+    h+='<div class="rxtier '+td.cls+'"><small>PROVISIONAL \u2014 your clinical judgement overrides</small><b>'+td.icon+' '+esc(td.name)+' \u00b7 '+esc(td.ctcae)+'</b>';
+    if(R.tierSel&&R.tierSel!==calc)h+='<p>Tier chosen by you'+(calc?' (suggested from ticks: '+esc(RX_TIERS[RX_KEYS[calc-1]].name)+')':'')+'.</p>';
+    else h+='<p>Suggested from your ticks'+(hi?' (highest: '+esc(hi.label)+')':'')+'. Grade 3 is only confirmed later, so this is a first guide.</p>';
+    if(tier>=2)h+='<p class="rxrest">'+esc(RX_RESTART)+'</p>';
+    h+='</div>';
+  }else h+='<p class="hint">No tier yet. Go back and tick what you see, or choose a tier below.</p>';
+  h+='<div class="chips rxchg" role="radiogroup" aria-label="Change the tier">'+RX_KEYS.map(function(k,i){var t=RX_TIERS[k];return '<button type="button" class="chip" role="radio" aria-checked="'+(tier===i+1)+'" data-rx="tier" data-v="'+(i+1)+'" data-f="tier-'+(i+1)+'"><span>'+t.icon+' '+esc(t.name)+'</span></button>';}).join("")+'</div>';
+  if(R.pauseState==="asked"&&T.running){
+    h+='<div class="rxnote warnc"><b>Pause timer?</b> A moderate reaction usually means stopping the infusion. Pausing the timer does not stop the pump.<div class="row"><button type="button" class="btn primary" data-rx="pause" data-f="pause">\u23f8 Pause timer</button><button type="button" class="btn" data-rx="keep" data-f="keep">Keep running</button></div></div>';
+  }
+  if(R.pauseState==="auto"&&!T.running){
+    h+='<div class="rxnote warnc"><b>Timer paused automatically</b> at '+tStr(R.pausedAt)+'. The app cannot stop the pump: do it yourself.<div class="row"><button type="button" class="btn" data-rx="undo" data-f="undo">\u21a9 Undo: resume timer</button></div></div>';
+  }
+  var n=3;
+  if(td){
+    if(tier===4){
+      h+='<div class="rxnote warnc">Follow the Resuscitation Council UK steps on the emergency screen: adrenaline timer, tick-list and tryptase.<div class="row"><button type="button" class="btn rxana" style="margin:0" data-rx="ana">\ud83d\udea8 Open emergency steps</button></div></div>';
+    }else{
+      h+='<h3 class="rxsec">3. Actions \u2014 tick when done (time is recorded)</h3><div class="rxsyms">'+td.acts.map(function(a){return rxActBtn(R,a,key);}).join("")+'</div>';
+      if(tier===3)h+='<p class="hint">Any airway, breathing or circulation problem: manage as anaphylaxis (Emergency steps).</p>';
+      n=4;
+    }
+    var cats={};Object.keys(R.sym).forEach(function(id){if(R.sym[id]&&RX_SYMI[id]&&RX_SYMI[id].cat)cats[RX_SYMI[id].cat]=1;});
+    if(cats.cardiac)h+='<div class="rxnote warnc"><b>Possible cardiac event:</b> stop the infusion and get a medical review. UKONS: treat chest pain as cardiac until proven otherwise (urgent ECG, troponin, urgent assessment).</div>';
+    if(cats.tls)h+='<div class="rxnote warnc"><b>Possible tumour lysis:</b> tell the doctor urgently. Bloods: U&amp;E, urate, calcium, phosphate, LDH.</div>';
+  }
+  h+='<h3 class="rxsec">'+n+'. Record</h3><div class="rxsyms">'+rxDocBtn(R)+'</div>';
+  h+='<label class="lbl" for="rxNotes" style="margin-top:10px">Notes for the record (optional)</label><textarea id="rxNotes" class="input" rows="3" maxlength="500" autocomplete="off" placeholder="What happened? Do not type patient names or IDs.">'+esc(R.notes)+'</textarea>';
+  if(!R.confirmed){
+    h+='<button type="button" class="btn go big" style="margin-top:12px" data-rx="confirm" data-f="confirm"'+(tier?'':' disabled')+'>\u2714 Confirm reaction</button>';
+    h+='<p class="hint">Nothing is recorded until you tap Confirm reaction. The record gets the time, running time, step and rate at onset, symptoms, provisional tier, actions with times, notes, doctor informed and outcome.</p>';
+  }else{
+    h+='<h3 class="rxsec">Outcome</h3><div class="chips rxout" role="radiogroup" aria-label="Outcome">'+RX_OUT.map(function(o,i){return '<button type="button" class="chip" role="radio" aria-checked="'+(R.outcome===o)+'" data-rx="out" data-v="'+i+'" data-f="out-'+i+'" style="flex:1 1 100%"><span>'+esc(o)+'</span></button>';}).join("")+'</div>';
+    if(R.outcome===RX_OUT[1])h+='<div class="rxnote warnc">Ending the infusion uses the Stop flow with the reason filled in.<div class="row"><button type="button" class="btn danger" data-rx="tostop" data-f="tostop">\u23f9 Go to Stop / end infusion</button></div></div>';
+    if(R.outcome===RX_OUT[0])h+='<div class="rxnote"><span class="rxrest">'+esc(RX_RESTART)+'</span> Continue from the Timer tab (\u25b6 Resume). Rates always come straight from the chart; the app does not calculate a restart rate. Set the pump as instructed.</div>';
+    else h+='<div class="rxnote"><span class="rxrest">'+esc(RX_RESTART)+'</span></div>';
+  }
+  h+='<div class="rxnote warnc"><b>After the reaction</b><br>Consider a Yellow Card report (MHRA; give the brand name and batch number) and complete your trust incident form.<div class="rxsyms" style="margin-top:8px"><button type="button" class="rxact" role="checkbox" aria-checked="'+R.yc+'" data-rx="yc" data-f="yc"><span class="box" aria-hidden="true">'+(R.yc?'\u2714':'')+'</span><span class="t">Yellow Card considered or submitted</span></button><button type="button" class="rxact" role="checkbox" aria-checked="'+R.inc+'" data-rx="inc" data-f="inc"><span class="box" aria-hidden="true">'+(R.inc?'\u2714':'')+'</span><span class="t">Incident form done</span></button></div></div>';
+  h+='<p class="hint">'+esc(RX_DISC)+' Tier and grade are provisional and for you to confirm.</p>';
+  h+='<div class="rxfoot">';
+  if(R.confirmed)h+='<button type="button" class="btn primary big" data-rx="close">Done</button><button type="button" class="btn" data-rx="new" data-f="new">\uff0b Check a new reaction</button>';
+  else h+='<button type="button" class="btn" data-rx="discard" id="rxDiscard" data-f="discard">Discard \u2014 not a reaction</button>';
+  h+='</div>';
+  return h;
+}
+function rxKeepFocus(box,scroller,html,first,titleId){
+  var st=scroller.scrollTop,ae=document.activeElement,key=ae&&ae.getAttribute?ae.getAttribute("data-f"):null;
+  box.innerHTML=html;
+  scroller.scrollTop=first?0:st;
+  if(first){var t=$(titleId);if(t)try{t.focus({preventScroll:true});}catch(e){}}
+  else if(key){var n=box.querySelector('[data-f="'+key+'"]');if(n)try{n.focus({preventScroll:true});}catch(e){}}
+}
+function rxRender(first){
+  if(!RX.cur||!RX.open)return;
+  rxKeepFocus($("rxBody"),$("rxBody").parentNode,rxSheetHTML(),first,"rxTitle");
+}
+/* ---------- red anaphylaxis screen ---------- */
+function anaStep(R,n,a){
+  var on=!!R.acts[a[0]];
+  return '<button type="button" class="anastep" role="checkbox" aria-checked="'+on+'" data-rx="act" data-id="'+a[0]+'" data-k="ana" data-f="act-'+a[0]+'"><span class="n" aria-hidden="true">'+(on?'\u2714':n)+'</span><span class="t">'+esc(a[1])+(a[2]?'<small>'+esc(a[2])+'</small>':'')+'</span>'+(on?'<time>'+tStr(R.acts[a[0]].wall)+'</time>':'')+'</button>';
+}
+function anaHTML(){
+  var R=RX.cur,A={};RX_TIERS.ana.acts.forEach(function(a){A[a[0]]=a;});
+  var h='<div class="anain"><div class="ahead"><h2 id="anaTitle" tabindex="-1">\ud83d\udea8 Suspected anaphylaxis</h2><button type="button" class="btn plainw" data-rx="anaback" data-f="anaback">\u2190 Back</button></div>';
+  h+='<p class="sub">Provisional: your clinical judgement decides. Resuscitation Council UK 2021. Follow your trust policy, prescription and PGD.</p>';
+  h+='<p class="rxpump" role="note">\ud83d\uded1 '+esc(RX_PUMP)+'</p>';
+  if(R.pauseState==="auto"&&!T.running)h+='<div class="anabox"><p><b>Timer paused automatically</b> at '+tStr(R.pausedAt)+'.</p><button type="button" class="btn" data-rx="undo" data-f="undo">\u21a9 Undo: resume timer</button></div>';
+  h+=anaStep(R,1,A.help);
+  h+=anaStep(R,2,A.stop);
+  h+=anaStep(R,3,A.flat);
+  var n=R.adr.length;
+  h+='<div class="anabox"><h3>4. Adrenaline IM</h3><p><b>500 micrograms = 0.5 mL of 1 mg/mL (1:1000)</b>, outer (anterolateral) mid-thigh. As prescribed / per PGD. Repeat after 5 minutes if no improvement.</p>';
+  if(R.adrDue>0){h+='<div class="'+'anacd" id="anaCd" role="timer">'+rxCd(R.adrDue-Date.now())+'</div><p id="anaCdSub" style="text-align:center">until a repeat IM adrenaline dose is due if there is no improvement</p>';}
+  h+='<button type="button" class="btn go" data-rx="adr" data-f="adr">\ud83d\udc89 '+(n?'Another dose given (dose '+(n+1)+')':'Adrenaline given')+' \u2014 start 5-minute timer</button>';
+  if(n){
+    h+='<ul class="rxlist">'+R.adr.map(function(a,i){return '<li><time>'+tStr(a.wall)+'</time> \u00b7 dose '+(i+1)+': 500 micrograms IM</li>';}).join("")+'</ul>';
+    h+='<div class="row"><button type="button" class="btn" data-rx="adrstop" data-f="adrstop"'+(R.adrDue?'':' disabled')+'>Stop timer (improving)</button><button type="button" class="btn" data-rx="adrundo" data-f="adrundo">Undo last dose</button></div>';
+  }
+  if(n>=2)h+='<p><b>After two IM doses with no improvement:</b> follow the refractory anaphylaxis algorithm. IV adrenaline only by experienced specialists.</p>';
+  h+='<p style="font-size:12.5px">Sound and vibration are used only for this timer, after you start it.</p></div>';
+  h+=anaStep(R,5,A.a_o2);
+  h+=anaStep(R,6,A.a_fluid);
+  h+=anaStep(R,7,A.a_mon);
+  h+='<div class="anabox"><h3>8. Mast cell tryptase</h3><p>First sample as soon as possible after treatment starts; second ideally 1 to 2 hours after onset; third after 24 hours.</p><div class="rxsyms">';
+  [["a_tryp1","Tryptase sample 1 taken"],["a_tryp2","Tryptase sample 2 taken"],["a_tryp3","Tryptase sample 3 taken"]].forEach(function(x){
+    var on=!!R.acts[x[0]];
+    h+='<button type="button" class="rxact" role="checkbox" aria-checked="'+on+'" data-rx="act" data-id="'+x[0]+'" data-k="ana" data-l="'+esc(x[1])+'" data-f="act-'+x[0]+'"><span class="box" aria-hidden="true">'+(on?'\u2714':'')+'</span><span class="t">'+esc(x[1])+'</span>'+(on?'<time>'+tStr(R.acts[x[0]].wall)+'</time>':'')+'</button>';
+  });
+  h+='</div></div>';
+  h+=anaStep(R,9,A.a_rev);
+  h+='<div class="anabox"><p>Observe for at least 6 hours after two adrenaline doses and at least 12 hours for severe features (RCUK risk-stratified). Antihistamines and steroids are not first-line. Same drug again only after senior review.</p><p><span class="rxrest">'+esc(RX_RESTART)+'</span></p></div>';
+  h+='<p class="anasrc">Sources: Resuscitation Council UK, May 2021 [3]; UK SACT Board, 8 Aug 2025 [4]; UKONS v4.0, 13 Feb 2023 [5]. Last reviewed '+RX_REVIEWED+'.</p>';
+  h+='<div class="anabox"><div class="rxsyms">'+rxDocBtn(R)+'</div>';
+  if(!R.confirmed)h+='<button type="button" class="btn go" data-rx="confirm" data-f="confirm">\u2714 Confirm reaction (start the record)</button><p>Nothing is recorded until you confirm. Adrenaline times you have tapped are kept and added.</p>';
+  else h+='<p><b>\u2714 Recorded at '+tStr(R.confirmed)+'.</b> Set the outcome in the record sheet.</p>';
+  h+='<button type="button" class="btn" data-rx="anasheet" data-f="anasheet">Open the record sheet</button></div>';
+  h+='<button type="button" class="btn plainw" style="width:100%;min-height:52px" data-rx="close">Close</button></div>';
+  return h;
+}
+function rxRenderAna(first){
+  if(!RX.cur||!RX.ana)return;
+  rxKeepFocus($("anaBody"),$("anaScreen"),anaHTML(),first,"anaTitle");
+  rxAnaTimerUI(RX.cur);
+}
+/* ---------- reaction events ---------- */
+function rxRefresh(){rxRender(false);rxRenderAna(false);rxBarUpdate();rxStatUpdate();}
+function rxClick(e){
+  var b=e.target.closest("[data-rx]");
+  if(!b){if(e.target.id==="rxBack")closeRx();return;}
+  var a=b.getAttribute("data-rx"),R=RX.cur;
+  if(a==="close"){closeRx();return;}
+  if(a==="open"){var x=rxList()[Number(b.getAttribute("data-i"))];if(x){RX.cur=x;rxRender(true);}return;}
+  if(!R)return;
+  if(a==="ana"){openAna();return;}
+  if(a==="view"){R.view=b.getAttribute("data-v");rxRender(true);return;}
+  if(a==="anaback"){closeAna(true);return;}
+  if(a==="anasheet"){closeAna(true);return;}
+  if(a==="sym"){
+    var id=b.getAttribute("data-id");rxTouch(R);
+    var on=!R.sym[id];if(on)R.sym[id]=true;else delete R.sym[id];
+    rxApplyPause(R);
+    if(R.confirmed)logEv("rxupd","Reaction symptom "+(on?"added":"removed"),{detail:RX_SYMI[id].label,snap:R.snap});
+  }else if(a==="tier"){
+    rxTouch(R);var v=Number(b.getAttribute("data-v"));
+    R.tierSel=(v===rxCalc(R))?0:v;
+    rxApplyPause(R);
+    if(R.confirmed)logEv("rxupd","Reaction tier set to "+rxTD(R).name+" ("+rxTD(R).ctcae+", provisional)",{snap:R.snap});
+  }else if(a==="act"){
+    var aid=b.getAttribute("data-id"),k=b.getAttribute("data-k")||"moderate";rxTouch(R);
+    var lab=b.getAttribute("data-l")||rxActLabel(aid,k);
+    if(R.acts[aid]){delete R.acts[aid];if(R.confirmed)logEv("rxact","Reaction action removed (ticked in error): "+lab,{snap:R.snap});}
+    else{var w=Date.now(),el=elapsed();R.acts[aid]={wall:w,el:el,label:lab};if(R.confirmed)rxLogA(R,lab,w,el);}
+    if(aid==="toana"){/* informational only */}
+  }else if(a==="doc"){
+    rxTouch(R);
+    if(R.doc){R.doc=null;if(R.confirmed)logEv("rxact","Doctor informed removed (ticked in error)",{snap:R.snap});}
+    else{R.doc={wall:Date.now(),el:elapsed()};if(R.confirmed)logEv("rxact","Doctor informed",{wall:R.doc.wall,el:R.doc.el,snap:R.snap});}
+  }else if(a==="yc"||a==="inc"){
+    R[a]=!R[a];if(R.confirmed)logEv("rxupd",(a==="yc"?"Yellow Card":"Incident form")+(R[a]?" ticked":" unticked"),{snap:R.snap});
+  }else if(a==="pause"){if(T.running)startPause();R.pauseState="paused";}
+  else if(a==="keep"){R.pauseState="declined";}
+  else if(a==="undo"){if(T.started&&!L.ended&&!T.running)startPause();R.pauseState="undone";}
+  else if(a==="confirm"){rxConfirm(R);}
+  else if(a==="out"){
+    var o=RX_OUT[Number(b.getAttribute("data-v"))];R.outcome=R.outcome===o?"":o;R.outcomeAuto=false;
+    if(R.outcome)logEv("rxout","Reaction outcome: "+R.outcome,{snap:R.snap});
+  }
+  else if(a==="tostop"){rxToStop();return;}
+  else if(a==="adr"){rxAdr(R);}
+  else if(a==="adrstop"){R.adrDue=0;R.adrAlarmed=false;}
+  else if(a==="adrundo"){rxAdrUndo(R);}
+  else if(a==="new"){RX.cur=rxNew();rxRender(true);rxBarUpdate();return;}
+  else if(a==="discard"){
+    if(!RX.discardT){var orig=b.textContent;b.textContent="Sure? Tap again to discard the draft";RX.discardT=setTimeout(function(){RX.discardT=null;var d=$("rxDiscard");if(d)d.textContent=orig;},4000);return;}
+    clearTimeout(RX.discardT);RX.discardT=null;
+    if(R.adrDue)R.adrDue=0;
+    RX.cur=null;closeRx();return;
+  }
+  rxRefresh();
+}
+function rxInput(e){
+  if(e.target.id==="rxNotes"&&RX.cur){
+    RX.cur.notes=e.target.value;
+    if(RX.cur.notes)rxTouch(RX.cur);
+  }
+}
+/* ---------- infusion reactions: records ---------- */
+function rxRecordItems(A){
+  var l=rxList();
+  l.forEach(function(R,i){
+    var td=rxTD(R),calc=rxCalc(R),s=R.snap||{},est=estimate(R.el);
+    A("h","Reaction record "+(i+1)+" of "+l.length+" (provisional, nurse-recorded)");
+    A("small","Provisional nurse-recorded entry, to be copied to the clinical record. The tier and grade are a first guide for the clinician to confirm. It does not replace the clinical notes.");
+    A("kv","Onset recorded",dtStr(R.wall));
+    A("kv","Running time at onset",fmtHMS(R.el));
+    A("kv","Step and rate at onset",stepName(s.idx,s.n,s.title,s.mg,s.ml)+": "+(rateTxt(s.mg,s.ml)||"rate not set"));
+    A("kv","Est. volume at onset",est.ml===null?"not available":"about "+Math.round(est.ml)+" ml (estimate)");
+    A("kv","Symptoms ticked",rxSymLabels(R).join("; ")||"none ticked");
+    A("kv","Provisional tier",td.name+" ("+td.ctcae+")"+(R.tierSel&&R.tierSel!==calc?(calc?" - chosen by the nurse; the ticks suggested "+RX_TIERS[RX_KEYS[calc-1]].name:" - chosen by the nurse (no symptoms ticked)"):""));
+    A("kv","Confirmed at",dtStr(R.confirmed));
+    A("kv","Doctor informed",R.doc?"Yes, at "+dtStr(R.doc.wall):"Not recorded");
+    A("kv","Outcome",(R.outcome||"Not recorded")+(R.outcomeAuto?" (set when the infusion ended with reason: Infusion reaction)":""));
+    A("kv","Notes",oneLine(R.notes)||"(none)");
+    A("kv","Yellow Card",R.yc?"Considered or submitted (ticked)":"Not ticked. Consider a Yellow Card report (give brand name and batch).");
+    A("kv","Incident form",R.inc?"Done (ticked)":"Not ticked. Complete your trust incident form.");
+    A("kv","Restart",RX_RESTART+" The app suggests no restart rate.");
+    A("small","Actions taken, with times (drug doses as prescribed / per PGD):");
+    var acts=rxActList(R);
+    if(!acts.length)A("log","No actions ticked");
+    acts.forEach(function(a){A("log",dtStr(a.wall)+" | running "+fmtHMS(a.el)+" | "+a.label);});
+  });
 }
 
 /* ---------- tabs & update ---------- */
 function showTab(t){
   S.tab=t;
-  ["setup","run","ref"].forEach(function(k){
+  ["setup","run","ref","rx"].forEach(function(k){
     $("p-"+k).hidden=k!==t;
     $("t-"+k).setAttribute("aria-selected",k===t?"true":"false");
   });
   window.scrollTo(0,0);
   if(t==="setup"){var mo=MOODS[W.cur]||MOODS.review;setMascot(mo.m,mo.t);}
   else if(t==="run")setMascot("cheer","You've got this!");
+  else if(t==="rx")setMascot("think","Reactions at a glance");
   else setMascot("think","Chart check!");
   renderRun();
 }
-function update(){var d=renderSetup();renderRef(d);renderRun();}
+function update(){var d=renderSetup();renderRef(d);renderRun();rxBarUpdate();rxStatUpdate();}
 
 /* ---------- themes ---------- */
 var THEMES=[
@@ -1881,10 +2623,17 @@ $("swatches").addEventListener("click",function(e){
   applyTheme(b.getAttribute("data-theme-id"),true);
   var nb=$("swatches").querySelector('[data-theme-id="'+b.getAttribute("data-theme-id")+'"]');if(nb)nb.focus();
 });
+function topSheet(){
+  if(!$("anaScreen").hidden)return $("anaScreen");
+  if(!$("rxSheet").hidden)return $("rxSheet");
+  if(!$("stopSheet").hidden)return $("stopSheet");
+  if(!$("themeSheet").hidden)return $("themeSheet");
+  return null;
+}
 document.addEventListener("keydown",function(e){
-  var sh=!$("stopSheet").hidden?$("stopSheet"):(!$("themeSheet").hidden?$("themeSheet"):null);
+  var sh=topSheet();
   if(!sh)return;
-  if(e.key==="Escape"){e.preventDefault();if(sh.id==="stopSheet")closeStop();else closeSheet();return;}
+  if(e.key==="Escape"){e.preventDefault();if(sh.id==="anaScreen")closeAna(true);else if(sh.id==="rxSheet")closeRx();else if(sh.id==="stopSheet")closeStop();else closeSheet();return;}
   if(e.key==="Tab"){
     var f=[].slice.call(sh.querySelectorAll("button,textarea,input")).filter(function(x){return !x.disabled;});
     if(!f.length)return;
@@ -1923,6 +2672,13 @@ $("installBtn").addEventListener("click",function(){
   try{d.prompt();if(d.userChoice&&d.userChoice.then)d.userChoice.then(function(){updateInstall();});}catch(e){}
 });
 window.addEventListener("load",swRegister);
+$("rxBar").addEventListener("click",function(){openRx();});
+$("rxSheet").addEventListener("click",rxClick);
+$("anaScreen").addEventListener("click",rxClick);
+$("rxBody").addEventListener("input",rxInput);
+$("rxStat").addEventListener("click",function(e){if(e.target.closest("[data-rxs]")){var l=rxList();if(l.length)openRx(l[l.length-1]);}});
+$("promptWatch").textContent=RX_WATCH;
+renderRxRef();
 if(PREF.big)document.documentElement.setAttribute("data-big","1");
 renderSettings();updateNet();
 $("tgSound").addEventListener("click",function(){
